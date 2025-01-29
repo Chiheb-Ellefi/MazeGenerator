@@ -55,6 +55,7 @@ public class MazeVisualizer extends Application {
         // Generate a new maze
         mazeGenerator = new MazeGenerator(MAZE_WIDTH, MAZE_HEIGHT);
         mazeGenerator.generateMaze();
+        mazeGenerator.createLoops();
 
         // Get the start and end nodes
         Node startNode = mazeGenerator.getStart();

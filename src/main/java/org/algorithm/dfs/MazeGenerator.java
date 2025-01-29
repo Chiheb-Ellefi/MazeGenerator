@@ -71,9 +71,9 @@ public class MazeGenerator {
     private List<Node> getUnvisitedNeighbors(Boolean[][] visited, Node current) {
         List<Node> unvisitedNeighbors = new ArrayList<>();
         int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-        for (int i = 0; i < directions.length; i++) {
-            int newRow = current.incrementRow(directions[i][0]);
-            int newCol = current.incrementColumn(directions[i][1]);
+        for (int[] direction : directions) {
+            int newRow = current.incrementRow(direction[0]);
+            int newCol = current.incrementColumn(direction[1]);
 
             if (newRow >= 0 && newRow < nbRow &&
                     newCol >= 0 && newCol < nbColumn &&
@@ -162,6 +162,55 @@ public class MazeGenerator {
         } else if (colDiff == 1) {
             current.removeBorder(1);
             next.removeBorder(3);
+        }
+    }
+    public void createLoops() {
+        int numberOfLoops=(int)(nbRow*nbColumn*0.3 );
+        int loopsCreated = 0;
+        while (loopsCreated < numberOfLoops) {
+            int col = random.nextInt(nbColumn);
+            int row = random.nextInt(nbRow);
+            int border = random.nextInt(4);
+            if (isBorderValid(row, col, border)) {
+                maze[row][col].removeBorder(border);
+
+                // Determine the neighboring cell
+                int neighborRow = row;
+                int neighborCol = col;
+                switch (border) {
+                    case 0:
+                        neighborRow--;
+                        break;
+                    case 1:
+                        neighborCol++;
+                        break;
+                    case 2:
+                        neighborRow++;
+                        break;
+                    case 3:
+                        neighborCol--;
+                        break;
+                }
+
+                int oppositeBorder = (border + 2) % 4;
+                maze[neighborRow][neighborCol].removeBorder(oppositeBorder);
+
+                loopsCreated++;
+            }
+        }
+    }
+    private boolean isBorderValid(int row, int col, int border) {
+        switch (border) {
+            case 0: // North
+                return row > 0;
+            case 1: // East
+                return col < nbColumn - 1;
+            case 2: // South
+                return row < nbRow - 1;
+            case 3: // West
+                return col > 0;
+            default:
+                return false;
         }
     }
     public void printMaze() {

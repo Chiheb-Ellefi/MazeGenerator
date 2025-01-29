@@ -1,19 +1,18 @@
 package org.algorithm.components;
 
-public class Node {
+public class HexaNode {
     private int row;
     private int column;
-    private boolean[] borders;
+    private boolean[] borders; // Borders: top-right(0), right(1), bottom-right(2), bottom-left(3), left(4), top-left(5)
     private char value;
-    private boolean partOfMaze; // New field to track if the node is part of the maze
+    private boolean partOfMaze;
 
-    public Node(int row, int column) {
+    public HexaNode(int row, int column) {
         this.row = row;
         this.column = column;
-        this.borders = new boolean[]{true, true, true, true}; // Borders: top, right, bottom, left
-        this.partOfMaze = false; // Initially, the node is not part of the maze
+        this.borders = new boolean[]{true, true, true, true, true, true};
+        this.partOfMaze = false;
     }
-
 
     public void setValue(char value) {
         this.value = value;
@@ -51,20 +50,10 @@ public class Node {
         borders[direction] = false;
     }
 
-    public int incrementRow(int increment) {
-        return row + increment;
-    }
-
-    public int incrementColumn(int increment) {
-        return column + increment;
-    }
-
-    // New method to check if the node is part of the maze
     public boolean isPartOfMaze() {
         return partOfMaze;
     }
 
-    // New method to set whether the node is part of the maze
     public void setPartOfMaze(boolean partOfMaze) {
         this.partOfMaze = partOfMaze;
     }
