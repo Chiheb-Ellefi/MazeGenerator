@@ -61,7 +61,6 @@ public class MazeVisualizer extends Application {
         Node startNode = mazeGenerator.getStart();
         Node endNode = mazeGenerator.getEnd();
 
-        // Draw the new maze
         for (int y = 0; y < MAZE_HEIGHT; y++) {
             for (int x = 0; x < MAZE_WIDTH; x++) {
                 Node node = mazeGenerator.getMaze()[y][x];
