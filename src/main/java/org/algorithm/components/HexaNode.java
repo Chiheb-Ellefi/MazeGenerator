@@ -3,7 +3,7 @@ package org.algorithm.components;
 public class HexaNode {
     private int row;
     private int column;
-    private boolean[] borders; // Borders: top-right(0), right(1), bottom-right(2), bottom-left(3), left(4), top-left(5)
+    private boolean[] borders; // [ (1, 0), (1, -1), (0, -1), (-1, 0), (-1, 1), (0, 1) ] (northeast, east, southeast, southwest, west, northwest)
     private char value;
     private boolean partOfMaze;
 
@@ -48,6 +48,13 @@ public class HexaNode {
 
     public void removeBorder(int direction) {
         borders[direction] = false;
+    }
+    public int incrementRow(int increment) {
+        return row + increment;
+    }
+
+    public int incrementColumn(int increment) {
+        return column + increment;
     }
 
     public boolean isPartOfMaze() {

@@ -17,8 +17,8 @@ import org.algorithm.components.Node;
 public class MazeVisualizer extends Application {
 
     private static final int CELL_SIZE = 30; // Size of each cell in pixels
-    private static final int MAZE_WIDTH = 40; // Number of columns in the maze
-    private static final int MAZE_HEIGHT = 20; // Number of rows in the maze
+    private static final int MAZE_WIDTH = 10; // Number of columns in the maze
+    private static final int MAZE_HEIGHT = 10; // Number of rows in the maze
 
     private Pane mazePane; // Pane to hold the maze cells
     private MazeGenerator mazeGenerator; // Maze generator instance

@@ -9,7 +9,6 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import org.algorithm.bee_hive.BeeHive;
 import org.algorithm.components.HexaNode;
 
 public class BeeHiveVisualizer extends Application {
@@ -21,8 +20,9 @@ public class BeeHiveVisualizer extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        beeHive = new BeeHive(10, 10);
+        beeHive = new BeeHive(20, 20);
         beeHive.generateHive();
+        beeHive.printHive();
         Group root = new Group();
         drawHive(root);
         Scene scene = new Scene(root, 1000, 800, Color.WHITE);
