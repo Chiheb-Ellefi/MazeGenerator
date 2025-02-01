@@ -152,8 +152,6 @@ public class PrimAlgorithm {
             int border = random.nextInt(4);
             if (isBorderValid(row, col, border)) {
                 maze[row][col].removeBorder(border);
-
-                // Determine the neighboring cell
                 int neighborRow = row;
                 int neighborCol = col;
                 switch (border) {
@@ -180,13 +178,13 @@ public class PrimAlgorithm {
     }
     private boolean isBorderValid(int row, int col, int border) {
         switch (border) {
-            case 0: // North
+            case 0:
                 return row > 0;
-            case 1: // East
+            case 1:
                 return col < nbColumn - 1;
-            case 2: // South
+            case 2:
                 return row < nbRow - 1;
-            case 3: // West
+            case 3:
                 return col > 0;
             default:
                 return false;
